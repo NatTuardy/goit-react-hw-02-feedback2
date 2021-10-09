@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import FeedbackOptions from "../FeedbackOptions/FeedbackOptions";
+import FeedbackOptions from "../feedbackOptions/FeedbackOptions";
 import Statistics from "../statistics/Statistics";
 import Section from "../sectionTitle/Section";
-import Notification from "../Notification/Notification";
-import { copyInNewObject } from "../helpers/copyInNewObject";
-import { hasCountTotal } from "../helpers/hasCountTotal";
+import Notification from "../notification/Notification";
+import { copyInNewObject } from "../../helpers/copyInNewObject";
+import { hasCountTotal } from "../../helpers/hasCountTotal";
 
 class MainPage extends Component {
   state = {
@@ -35,6 +35,7 @@ class MainPage extends Component {
   render() {
     const { good, neutral, bad } = this.state;
     const options = Object.keys(this.state);
+    const total = this.countTotalFeedback()
     return (
       <>
         <Section title="Please leave feedback">
@@ -44,13 +45,13 @@ class MainPage extends Component {
           />
         </Section>
         <Section title="Statistics">
-          {this.countTotalFeedback() ? (
+          {total ? (
             <Statistics
               data={this.state}
               good={good}
               neutral={neutral}
               bad={bad}
-              total={this.countTotalFeedback()}
+              total={total}
               positivePercentage={this.countPositiveFeedbackPercentage()}
             />
           ) : (

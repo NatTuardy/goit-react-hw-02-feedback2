@@ -8,7 +8,7 @@ const Statistics = ({
   bad,
   total,
   positivePercentage,
-  title
+
 }) => {
   const arrayFromData = Object.entries(data).map((item) => {
     return (
@@ -22,7 +22,6 @@ const Statistics = ({
 
   return (
     <>
-      <h1>{title}</h1>
       <h3>Good: {good}</h3>
       <h3>Neutral: {neutral}</h3>
       <h3>Bad: {bad}</h3>
@@ -37,11 +36,10 @@ const Statistics = ({
 export default Statistics;
 
 Statistics.propTypes = {
-  data: PropTypes.array.isRequired,
-  good: PropTypes.string.isRequired,
-  neutral: PropTypes.string.isRequired,
-  bad: PropTypes.string.isRequired,
+  data: PropTypes.object.isRequired,
+  good: PropTypes.number.isRequired,
+  neutral: PropTypes.number.isRequired,
+  bad: PropTypes.number.isRequired,
   total: PropTypes.number.isRequired,
   positivePercentage: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
 };
